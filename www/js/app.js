@@ -38,10 +38,16 @@ app.controller('main', function ($scope, $ionicModal, $http, localStorageService
 				// identifier, type, data
 
 				$("#blogTitle").text(data["data"]["name"]);
-				var oldBlog = data["data"]["elements"]["2e3c9e69-1f9e-4647-8d13-4e88094d2790"]["data"][0]["value"];
+				var oldBlog = data["data"]["elements"]["2e3c9e69-1f9e-4647-8d13-4e88094d2790"]["data"][0]["value"] + data["data"]["elements"]["2e3c9e69-1f9e-4647-8d13-4e88094d2790"]["data"][1]["value"];
 				var parsedBlog = oldBlog.replace(/<(?:.|\n)*?>/gm, ''); 
 				$("#blogContent").text(parsedBlog);
-				
+			
+				// set blog image
+				var pathToImage = "https://ace.nd.edu/";
+				pathToImage += data["data"]["elements"]["0e1e0d6b-2cd7-412e-85ab-f01cca361a22"]["data"]["file"]; 
+				alert(pathToImage);
+
+				//$("#blogImage").attr('src', pathToImage);
 
 			}
 			catch(e) {
